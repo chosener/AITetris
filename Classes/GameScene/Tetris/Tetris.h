@@ -72,6 +72,7 @@ public:
     //当前砖块的列
     int getPosColOfCurrentBrick() { return m_posCol; }
     
+    //设置新的砖块
     static bool setNewBrick(BrickCellValue *brickMatrix, int row, int column,
                             BrickCellValue currentBrick[4][4], BrickType brickType, BrickCellValue brickCellValue,
                             int &posRow, int &posCol);
