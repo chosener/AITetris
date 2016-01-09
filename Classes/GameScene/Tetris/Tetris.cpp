@@ -38,13 +38,16 @@ Tetris::~Tetris()
 // 指定行号和列号的方块单元值
 BrickCellValue Tetris::getBrickValue(int r, int c)
 {
-    if ((r >= 0 && r < m_row) && (c >= 0 && c < m_column)) {
+    if ((r >= 0 && r < m_row) && (c >= 0 && c < m_column))
+    {
         // 方块矩阵的该位置有方块则返回该值
-        if (BrickCellValue_NULL != m_brickMatrix[r*m_column+c]) {
+        if (BrickCellValue_NULL != m_brickMatrix[r*m_column+c])
+        {
             return m_brickMatrix[r*m_column+c];
         }
         // 否则，如果(r,c)为当前方块上的值，则返回当前方块相应位置的值
-        else if ((r >= m_posRow && r < m_posRow+4) && (c >= m_posCol && c< m_posCol+4)) {
+        else if ((r >= m_posRow && r < m_posRow+4) && (c >= m_posCol && c< m_posCol+4))
+        {
             return m_currentBrick[r-m_posRow][c-m_posCol];
         }
     }
@@ -324,22 +327,27 @@ bool Tetris::clearOneLine(BrickCellValue *brickMatrix, int row, int column,
 {
     int rStart = MIN(row-1, posRowCurrentBrick+4);
     int rEnd = MAX(0, posRowCurrentBrick);
-    for (int r = rStart; r >= rEnd; r--) {
+    for (int r = rStart; r >= rEnd; r--)
+    {
         // 先查看该行是否可以消行
         bool canClearLine = true;
-        for (int c = 0; c < column; c++) {
-            if (BrickCellValue_NULL == brickMatrix[r*column+c]) {
+        for (int c = 0; c < column; c++)
+        {
+            if (BrickCellValue_NULL == brickMatrix[r*column+c])
+            {
                 canClearLine = false;
                 break;
             }
         }
         // 如果能消行，则继续看上一行
-        if (canClearLine) {
+        if (canClearLine)
+        {
             lineIndex = r;
             // 从上往下赋值，内存移位处理即可
             memmove(brickMatrix+column, brickMatrix, r*column*sizeof(BrickCellValue));
             // 第0行清空
-            for (int c = 0; c < column; c++) {
+            for (int c = 0; c < column; c++)
+            {
                 brickMatrix[c] = BrickCellValue_NULL;
             }
             return true;

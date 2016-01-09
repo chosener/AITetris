@@ -62,10 +62,16 @@ public:
     
     // 方块操作
     BrickCellValue *getBrickMatrix() { return m_brickMatrix; }
+    
     BrickCellValue (*getCurrentBrick())[4] { return m_currentBrick; }
+    
     BrickType getCurrentBrickType() { return m_currentBrickType; }
+    
+    //当前砖块的行
     int getPosRowOfCurrentBrick() { return m_posRow; }
+    //当前砖块的列
     int getPosColOfCurrentBrick() { return m_posCol; }
+    
     static bool setNewBrick(BrickCellValue *brickMatrix, int row, int column,
                             BrickCellValue currentBrick[4][4], BrickType brickType, BrickCellValue brickCellValue,
                             int &posRow, int &posCol);
@@ -94,6 +100,7 @@ private:
     
     // 游戏区方块矩阵
     int m_row, m_column;
+    
     BrickCellValue *m_brickMatrix;
     
     // 当前方块的位置

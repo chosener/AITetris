@@ -22,8 +22,10 @@ bool GameLayer::init()
     // 游戏区
     float leftBrickMatrix = 120;
     m_spriteBrick = new Sprite*[Row_Tetris*Column_Tetris];
-    for (int r = 0; r < Row_Tetris; r++) {
-        for (int c = 0; c < Column_Tetris; c++) {
+    for (int r = 0; r < Row_Tetris; r++)
+    {
+        for (int c = 0; c < Column_Tetris; c++)
+        {
             m_spriteBrick[r*Column_Tetris+c] = Sprite::createWithTexture(Director::getInstance()->getTextureCache()->getTextureForKey("images/tetris_0.png"));
             m_spriteBrick[r*Column_Tetris+c]->setPosition(leftBrickMatrix+c*16+8,
                                                           visibleSize.height/2+153-r*16+8);
